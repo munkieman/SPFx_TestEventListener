@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "test-event-listner-client-side-solution",
+    "id": "45faad87-da43-40db-b9b8-85d91b5068a8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Test_Event_Listner description"
+      },
+      "longDescription": {
+        "default": "Test_Event_Listner description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "test-event-listner Feature",
+        "description": "The feature that activates elements of the test-event-listner solution.",
+        "id": "de6f9454-00f7-4bbe-a231-3d4ec82f5999",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/test-event-listner.sppkg"
+  }
+}

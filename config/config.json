@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "test-event-listner-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/testEventListner/TestEventListnerWebPart.js",
+          "manifest": "./src/webparts/testEventListner/TestEventListnerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TestEventListnerWebPartStrings": "lib/webparts/testEventListner/loc/{locale}.js"
+  }
+}

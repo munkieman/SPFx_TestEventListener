@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.15.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "test-event-listner",
+    "libraryId": "45faad87-da43-40db-b9b8-85d91b5068a8",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Test_Event_Listner",
+    "solutionShortDescription": "Test_Event_Listner description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
