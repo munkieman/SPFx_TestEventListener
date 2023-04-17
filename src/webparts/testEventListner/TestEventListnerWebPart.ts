@@ -12,12 +12,45 @@ import * as strings from 'TestEventListnerWebPartStrings';
 
 export interface ITestEventListnerWebPartProps {
   description: string;
+  divisionName: string;
+  teamName: string;
+  docLibrary: string;
+  dataResults: any[];
+  asmResults: any[];
+  cenResults: any[];
+  divisions:string[];
+  siteArray: any;
+  siteName: string;
+  siteTitle: string;
+  isDCPowerUser:boolean;
+  folderArray:any[];  
 }
 
 export default class TestEventListnerWebPart extends BaseClientSideWebPart<ITestEventListnerWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
+ 
+  private getFolders() : void {
+    let folderContainer : Element;
+    let folderHTML : string = "";
+
+    this.properties.folderArray=["Folder A","Folder B","Folder C","Folder D"];
+    for(let x=0;x<this.properties.folderArray.length;x++){
+      let folderID=this.properties.folderArray[x].replace(/\s+/g, "");
+
+      folderHTML += `<div class="row">
+                      <h2 class="accordion-header">
+                        <button class="btn btn-primary" id="${folderID}" type="button" data-bs-toggle="collapse" aria-expanded="true"> 
+                          <i class="bi bi-folder2"></i><a href="#" class="text-white ms-1">${this.properties.folderArray[x]}</a>                    
+                        </button>
+                      </h2>
+                    </div>`;
+    }
+    folderContainer = this.domElement.querySelector('#folders');
+    folderContainer.innerHTML = folderHTML;
+    this._setButtonEventHandlers(); 
+  }
 
   private _setButtonEventHandlers(): void {  
     let tabBtns=this.domElement.querySelectorAll('#btnCustomTab')
@@ -26,7 +59,18 @@ export default class TestEventListnerWebPart extends BaseClientSideWebPart<ITest
         var headtext =  tabBtns.innerHTML;  
         alert(headtext);  
       });
-    })  
+    })
+    
+    for(let x=0;x<this.properties.folderArray.length;x++){        
+      //if(x %2 === 0 ){
+        let folderID=this.properties.folderArray[x].replace(/\s+/g, "");
+        let folderName=this.properties.folderArray[x];
+        //folderItemArray = this.properties.folderArray[x+1];
+        console.log(folderID+" "+folderName);
+      //}
+      //folderNametemp=document.getElementById(folderIDtemp).innerHTML
+      document.getElementById(folderID).addEventListener("click",(_e:Event) => alert(folderName));
+    }     
   } 
 
   public render(): void {
@@ -58,8 +102,9 @@ export default class TestEventListnerWebPart extends BaseClientSideWebPart<ITest
       <button type="button" value="tab1" id="btnCustomTab">Tab 1</button>
       <button type="button" value="tab2" id="btnCustomTab">Tab 2</button>
       <button type="button" value="tab3" id="btnCustomTab">Tab 3</button>
+      <div id="folders"></div>
     </section>`;
-    this._setButtonEventHandlers();  
+    this.getFolders();
   }
 
   protected onInit(): Promise<void> {
@@ -67,8 +112,6 @@ export default class TestEventListnerWebPart extends BaseClientSideWebPart<ITest
       this._environmentMessage = message;
     });
   }
-
-
 
   private _getEnvironmentMessage(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
